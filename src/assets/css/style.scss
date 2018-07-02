@@ -44,6 +44,25 @@
  *
  * @import "tailwindcss/utilities";
  */
+
+.btn {
+	@apply bg-secondary-darker text-white uppercase tracking-wide px-4 py-2 rounded;
+	min-width:100px;
+}
+
+label {
+	@apply text-sm uppercase;
+}
+
+input, select {
+	@apply rounded p-2 w-full shadow-inner mb-4 appearance-none;
+}
+
+p {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
 @tailwind utilities;
 
 /**
