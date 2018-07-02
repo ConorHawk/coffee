@@ -143,6 +143,10 @@ let colors = {
   'secondary-light': '#7886d7',
   'secondary-lighter': '#b2b7ff',
   'secondary-lightest': '#e6e8ff',
+
+  'coffee-dark': '#1A1A19',
+  'coffee': '#CE9153',
+  'coffee-light': '#F2DFC0'
 }
 
 module.exports = {
