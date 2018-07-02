@@ -78,12 +78,12 @@
 }
 
 .btn {
-	@apply bg-coffee text-white uppercase tracking-wide px-4 py-2 rounded;
+	@apply bg-coffee text-white uppercase tracking-wide px-4 py-2 rounded text-sm font-normal text-center;
 	min-width:100px;
 }
 
 label {
-	@apply text-sm uppercase;
+	@apply text-xs uppercase tracking-wide;
 }
 
 input, select {
