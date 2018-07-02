@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-full flex items-center justify-center p-4">
-    <div class="text-coffee-light w-full">
+    <div class="w-full">
       <p class="text-sm">Get beautifully roasted<br>coffee to you door with</p>
       <h1 class="text-5xl font-bold">CAPP</h1>
       <router-link tag="btn" class="btn" to="/register">

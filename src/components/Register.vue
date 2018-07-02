@@ -1,6 +1,6 @@
 <template>
   <div class="h-full flex items-center p-4">
-    <div class="w-full text-white">
+    <div class="w-full">
       <h1>Register</h1>
       <label for="email">Email</label><br>
       <input type="text" id="email" name="">

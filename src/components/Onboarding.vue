@@ -1,6 +1,6 @@
 <template>
   <div class="h-full flex items-center p-4">
-    <div class="w-full text-white">
+    <div class="w-full">
       <h1>Quick question!</h1>
       <p>How many cups of coffee does your household drink each day?</p>
       <input type="text" id="coffeeCount" name="">
