@@ -4,9 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VModal from 'vue-js-modal'
+import VueSweetalert2 from 'vue-sweetalert2'
 
 export const EventBus = new Vue()
 
+Vue.use(VueSweetalert2)
 Vue.use(VModal)
 Vue.config.productionTip = false
 

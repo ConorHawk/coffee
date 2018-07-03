@@ -4,7 +4,7 @@
       <p class="m-0 text-xs">{{priceDetails.totalProducts}} item(s) selected</p>
       <p class="text-lg font-semibold m-0">${{priceDetails.totalPrice}} <span class="text-xs font-light">AUD</span></p>
     </div>
-    <button v-if="$route.name === 'Payment'" class="btn">
+    <button @click="purchase()" v-if="$route.name === 'Payment'" class="btn">
       Purchase
     </button>
     <router-link v-else tag="button" class="btn" to="/payment">
@@ -22,6 +22,16 @@ export default {
     }
   },
   methods: {
+    purchase: function () {
+      this.$swal({
+        type: 'success',
+        title: 'Order Complete',
+        html:
+            '<p>Your order has been placed. You\'ll receive an email confirming your order and your invoice.</p><p>Enjoy your coffee and thank you for using CAPP.</p>',
+        confirmButtonClass: 'btn',
+        buttonsStyling: false
+      })
+    }
   },
   computed: {
   }

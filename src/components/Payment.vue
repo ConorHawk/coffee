@@ -9,7 +9,7 @@
           classname="form-control"
           placeholder="Start typing"
           v-on:placechanged="getAddressData"
-          :country="['nz']"
+          :country="['au', 'nz']"
         >
         </vue-google-autocomplete>
         <label for="password">Delivery Frequency</label><br>

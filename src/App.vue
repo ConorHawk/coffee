@@ -25,7 +25,7 @@ export default {
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
           img: 'http://fixationcoffee.co.nz/wp-content/uploads/Best-Price-ROASTED-ARABICA-COFFEE-BEANS.jpg',
           price: 100,
-          count: 0
+          count: 1
         }, {
           name: 'Robusta',
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
