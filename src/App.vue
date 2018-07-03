@@ -27,13 +27,13 @@ export default {
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
           img: '/static/images/coffee1.jpg',
           price: 100,
-          count: 1
+          count: 0
         }, {
           name: 'Robusta',
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
           img: '/static/images/coffee2.jpg',
           price: 150,
-          count: 2
+          count: 0
         }, {
           name: 'Liberian',
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
