@@ -9,16 +9,16 @@
             <h4 class="font-light text-lg">${{product.price}} <span class="text-xs">each</span></h4>
             <br>
             <p class="m-0 text-sm">{{product.description}}</p>
-            <div class="py-2 flex flex-col items-start justify-center">
+            <div class="pb-2 pt-4 flex flex-col items-start justify-center">
               <p class="text-xs uppercase tracking-wide text-coffee m-0 inline">Quantity</p>
               <div class="border-coffee border rounded-full inline-flex items-center justify-between">
-                <button :disabled="product.count === 0" class="px-2 text-coffee product-count-button" @click="changeProductCount(index, -1)">
+                <button :disabled="product.count === 0" class="px-4 py-2 text-coffee product-count-button" @click="changeProductCount(index, -1)">
                   <i class="text-xs fal fa-chevron-left"></i>
                 </button>
                 <p class="w-6 text-center m-0">
                   {{product.count}}
                 </p>
-                <button class="px-2 text-coffee" @click="changeProductCount(index, 1)">
+                <button class="px-4 py-2 text-coffee" @click="changeProductCount(index, 1)">
                   <i class="text-xs fal fa-chevron-right"></i>
                 </button>
               </div>
