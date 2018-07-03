@@ -91,7 +91,7 @@ label {
 }
 
 input, select {
-	@apply rounded p-2 w-full shadow-inner mb-4 appearance-none;
+	@apply rounded p-2 w-full shadow-inner mb-4 appearance-none bg-white;
 }
 
 p {

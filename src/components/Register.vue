@@ -6,9 +6,11 @@
       <input type="text" id="email" name="">
       <label for="password">Password</label><br>
       <input type="text" id="password" name="">
-      <router-link tag="btn" class="btn" to="/onboarding">
-        Let's go
-      </router-link>
+      <div class="flex justify-end">
+        <router-link tag="btn" class="btn" to="/onboarding">
+          Let's go
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
