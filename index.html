@@ -26,6 +26,7 @@
           if (file.match(/\.(js|css)$/)) { %>
     <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
     <link rel="stylesheet" type="text/css" href="/static/css/all.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5c4RVFzJa0y1jJldiOaKVR4ZCk_vhJiU&libraries=places"></script>
   </head>
   <body>
     <noscript>

@@ -1,87 +1,65 @@
 <template>
-  <div class="h-full">
-    <nav class="w-full p-2 bg-secondary-dark text-white flex justify-between">
-      <h2>CAPP</h2>
-      <button class="text-xl text-white">
-        <i class="fas fa-bars"></i>
-      </button>
-    </nav>
+  <div class="min-h-full" style="padding-bottom:62px">
     <div class="p-4">
-      <div v-for="product in products" class="my-2 rounded bg-white p-2 flex items-center">
-        <div class="h-12 w-12 rounded flex-none bg-cover bg-center" :style="{'backgroundImage': `url('${product.img}')`}"></div>
-        <div class="px-2">
-          <h3>{{product.name}}</h3>
-          <p>{{product.description}}</p>
-        </div>
-        <div class="px-2">
-          <button @click="product.selected = !product.selected" class="opacity-25 text-primary" :class="{'opacity-100': product.selected}">
-            <i class="far fa-check"></i>
-          </button>
+      <div class="my-2 product-button" v-for="(product, index) in products">
+        <div class="rounded bg-coffee-lighter text-coffee-dark flex">
+          <div class="w-1/3 flex-none bg-cover bg-center" :style="{'backgroundImage': `url('${product.img}')`}"></div>
+          <div class="p-2 text-left">
+            <h3 class="text-base">{{product.name}}</h3>
+            <h4 class="font-light text-lg">${{product.price}} <span class="text-xs">each</span></h4>
+            <br>
+            <p class="m-0 text-sm">{{product.description}}</p>
+            <div class="py-2 flex flex-col items-start justify-center">
+              <p class="text-xs uppercase tracking-wide text-coffee m-0 inline">Quantity</p>
+              <div class="border-coffee border rounded-full inline-flex items-center justify-between">
+                <button :disabled="product.count === 0" class="px-2 text-coffee product-count-button" @click="changeProductCount(index, -1)">
+                  <i class="text-xs fal fa-chevron-left"></i>
+                </button>
+                <p class="w-6 text-center m-0">
+                  {{product.count}}
+                </p>
+                <button class="px-2 text-coffee" @click="changeProductCount(index, 1)">
+                  <i class="text-xs fal fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="px-2">
+            <button class="opacity-25 text-primary">
+              <i class="far fa-check"></i>
+            </button>
+          </div> -->
         </div>
       </div> 
-    </div>
-    <div v-if="selectedProducts.length > 0" class="fixed pin-b pin-r w-full bg-white p-2 flex items-center justify-between">
-      <div>
-        <p>{{selectedProducts.length}} items selected</p>
-        <p class="font-bold">${{selectedProducts.length * 500}} <span class="text-xs font-light">AUD</span></p>
-      </div>
-      <router-link tag="btn" class="btn" to="/payment">
-        BUY NOW
-      </router-link>
     </div>
   </div>
 </template>
 
 <script>
+import { EventBus } from '@/event-bus.js'
 export default {
   name: 'hello',
+  props: ['products', 'priceDetails'],
   data () {
     return {
-      products: [
-        {
-          name: 'Coffee 1',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-          img: 'https://i2.wp.com/ottosgranary.com/wp-content/uploads/2018/02/Macadamia-Kona.jpg?fit=3024%2C4032&ssl=1',
-          selected: false
-        }, {
-          name: 'Coffee 2',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-          img: 'https://i2.wp.com/ottosgranary.com/wp-content/uploads/2018/02/Macadamia-Kona.jpg?fit=3024%2C4032&ssl=1',
-          selected: false
-        }, {
-          name: 'Coffee 3',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-          img: 'https://i2.wp.com/ottosgranary.com/wp-content/uploads/2018/02/Macadamia-Kona.jpg?fit=3024%2C4032&ssl=1',
-          selected: false
-        }
-      ]
+    }
+  },
+  methods: {
+    changeProductCount: function (index, count) {
+      EventBus.$emit('change-product-count', index, count)
     }
   },
   computed: {
     selectedProducts: function () {
-      return this.products.filter(product => product.selected)
+      return this.products.filter(product => product.count > 0)
     }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #35495E;
-}
+<style lang="scss">
+  .product-count-button:disabled {
+    visibility: hidden
+  }
 </style>

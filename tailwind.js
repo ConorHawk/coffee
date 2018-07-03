@@ -146,7 +146,8 @@ let colors = {
 
   'coffee-dark': '#1A1A19',
   'coffee': '#CE9153',
-  'coffee-light': '#F2DFC0'
+  'coffee-light': '#F2DFC0',
+  'coffee-lighter': '#f9eedb'
 }
 
 module.exports = {

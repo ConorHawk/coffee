@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 import VModal from 'vue-js-modal'
 
+export const EventBus = new Vue()
+
 Vue.use(VModal)
 Vue.config.productionTip = false
 
