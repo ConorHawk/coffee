@@ -98,18 +98,20 @@ p {
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
+.swal2-container {
+  .swal2-popup {
+    @apply bg-coffee-dark;
+  }
 
-.swal2-popup {
-  @apply bg-coffee-dark;
+  .swal2-popup .swal2-content {
+    @apply text-coffee-light font-sans text-base;
+  }
+
+  .swal2-popup .swal2-title {
+    @apply text-coffee-light font-sans;
+  }
 }
 
-.swal2-popup .swal2-content {
-  @apply text-coffee-light font-sans text-base;
-}
-
-.swal2-popup .swal2-title {
-  @apply text-coffee-light font-sans;
-}
 
 // Overriding sweet alert
 body.swal2-height-auto {
