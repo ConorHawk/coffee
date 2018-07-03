@@ -5,7 +5,7 @@
       <label for="email">Email</label><br>
       <input type="text" id="email" name="">
       <label for="password">Password</label><br>
-      <input type="text" id="password" name="">
+      <input type="password" id="password" name="">
       <div class="flex justify-end">
         <router-link tag="btn" class="btn" to="/onboarding">
           Let's go
