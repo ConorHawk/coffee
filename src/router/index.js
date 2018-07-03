@@ -25,11 +25,19 @@ export default new Router({
     }, {
       path: '/products',
       name: 'ProductIndex',
-      component: ProductIndex
+      component: ProductIndex,
+      meta: {
+        showTopNav: true,
+        showBotNav: true
+      }
     }, {
       path: '/payment',
       name: 'Payment',
-      component: Payment
+      component: Payment,
+      meta: {
+        showTopNav: true,
+        showBotNav: true
+      }
     }
   ]
 })

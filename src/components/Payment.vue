@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-full flex justify-between items-center p-4" style="margin-top:-62px">
-    <div class="min-h-full">
+  <div class="min-h-full flex justify-between items-center" style="padding:45px 0">
+    <div class="min-h-full  p-4">
       <div>
         <h1>Complete Order</h1>
         <label for="email">Delivery Address</label><br>

@@ -1,10 +1,12 @@
 <template>
   <div id="app" class="h-full min-h-full font-sans text-coffee-light bg-pattern leading-normal font-light overflow-y-auto overflow-hidden">
-    <top-nav></top-nav>
+    <transition name="top-nav" mode="out-in">
+      <top-nav v-if="$route.meta.showTopNav" class="top-nav"></top-nav>
+    </transition>
     <transition name="page" mode="out-in">
       <router-view :products="products" :priceDetails="priceDetails"></router-view>
     </transition>
-    <purchase-nav :priceDetails="priceDetails"></purchase-nav>
+    <purchase-nav v-if="$route.meta.showBotNav" :priceDetails="priceDetails"></purchase-nav>
   </div>
 </template>
 
@@ -23,7 +25,7 @@ export default {
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
           img: 'http://fixationcoffee.co.nz/wp-content/uploads/Best-Price-ROASTED-ARABICA-COFFEE-BEANS.jpg',
           price: 100,
-          count: 1
+          count: 0
         }, {
           name: 'Robusta',
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
@@ -81,5 +83,14 @@ export default {
   .page-leave-to {
     opacity: 0;
     transform: translateX(-20px);
+  }
+
+  .top-nav-enter-active, .top-nav-leave-active {
+    transition: all .2s;
+    transform: translateY(0px);
+  }
+  .top-nav-enter, .top-nav-leave-to {
+    opacity: 0;
+    transform: translateY(-52px);
   }
 </style>

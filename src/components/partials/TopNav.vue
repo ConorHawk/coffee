@@ -1,5 +1,5 @@
 <template>
-  <nav class="w-full p-2 bg-coffee text-white flex justify-between">
+  <nav class="w-full p-2 bg-coffee text-white flex justify-between fixed pin-t pin-l z-50">
     <div class="flex items-center">
       <div class="w-6 mr-2">
         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

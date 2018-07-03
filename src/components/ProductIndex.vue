@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-full" style="padding-bottom:62px">
+  <div class="min-h-full" style="padding:45px 0">
     <div class="p-4">
       <div class="my-2 product-button" v-for="(product, index) in products">
         <div class="rounded bg-coffee-lighter text-coffee-dark flex">
