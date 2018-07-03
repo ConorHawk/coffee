@@ -16,13 +16,14 @@
       </div>
       <h2 class="font-bold">CAPP</h2>
     </div>
-    <button class="text-xl text-white">
+    <button @click="toggleMenu()" class="text-xl text-white">
       <i class="fas fa-bars"></i>
     </button>
   </nav>
 </template>
 
 <script>
+import { EventBus } from '@/event-bus.js'
 export default {
   name: 'hello',
   props: [],
@@ -31,6 +32,9 @@ export default {
     }
   },
   methods: {
+    toggleMenu: function () {
+      EventBus.$emit('toggle-menu')
+    }
   },
   computed: {
   }

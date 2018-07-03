@@ -34,30 +34,41 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div class="px-2">
-                  <button class="opacity-25 text-primary">
-                    <i class="far fa-check"></i>
-                  </button>
-                </div> -->
               </div>
             </div> 
           </div>
-          <div>
-            <p class="text-lg">Next payment: <span class="font-semibold text-xl">${{priceDetails.totalPrice}}</span></p>
-          </div>
-          <div>
-            <p class="text-lg mb-2">Next shipment in:</p>
-            <div class="border-coffee border rounded-full inline-flex items-center justify-between w-full">
-              <button :disabled="shipmentDays === 0" class="px-4 py-2 text-coffee product-count-button" @click="shipmentDays++">
-                <i class="text-xs fal fa-chevron-left"></i>
-              </button>
-              <p class="text-center m-0 text-lg font-semibold">
-                {{shipmentDays}} days
-              </p>
-              <button class="px-4 py-2 text-coffee" @click="shipmentDays--">
-                <i class="text-xs fal fa-chevron-right"></i>
-              </button>
-            </div>
+          <div class="w-full">
+            <table>
+              <tr>
+                <td><p class="text-lg">Subscription Status:</p></td>
+                <td>
+                  <div class="flex">
+                    <button style="min-width:auto" @click="subStatus = true" :class="{'hollow': !subStatus}" class="btn text-sm px-2 mr-2">Active</button>
+                    <button style="min-width:auto" @click="subStatus = false" :class="{'hollow': subStatus}" class="btn text-sm px-2">Paused</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><p class="text-lg">Next payment:</p></td>
+                <td><span class="font-semibold text-xl">${{priceDetails.totalPrice}}</span></td>
+              </tr>
+              <tr>
+                <td><p class="text-lg m-0">Next shipment in:</p></td>
+                <td>
+                  <div class="border-coffee border rounded-full inline-flex items-center justify-between">
+                    <button :disabled="shipmentDays === 0" class="px-4 py-2 text-coffee product-count-button" @click="shipmentDays--">
+                      <i class="text-xs fal fa-chevron-left"></i>
+                    </button>
+                    <p class="text-center m-0 text-lg font-semibold">
+                      {{shipmentDays}} days
+                    </p>
+                    <button class="px-4 py-2 text-coffee" @click="shipmentDays++">
+                      <i class="text-xs fal fa-chevron-right"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
@@ -72,7 +83,8 @@ export default {
   props: ['products', 'priceDetails'],
   data () {
     return {
-      shipmentDays: 14
+      shipmentDays: 14,
+      subStatus: true
     }
   },
   methods: {
@@ -89,7 +101,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style lang="scss">
   .coffee-item {
     margin-right:-10px;
     
@@ -97,5 +109,11 @@ export default {
   .coffee-img {
     background-color: rgba(0,0,0,0.3);
     background-blend-mode: multiply;
+  }
+  td {
+    padding:.5rem;
+    p {
+      margin: 0;
+    }
   }
 </style>

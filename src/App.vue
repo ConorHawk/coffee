@@ -7,16 +7,18 @@
       <router-view :products="products" :priceDetails="priceDetails"></router-view>
     </transition>
     <purchase-nav v-if="$route.meta.showBotNav" :priceDetails="priceDetails"></purchase-nav>
+    <main-menu></main-menu>
   </div>
 </template>
 
 <script>
 import PurchaseNav from '@/components/partials/PurchaseNav'
 import TopNav from '@/components/partials/TopNav'
+import MainMenu from '@/components/partials/MainMenu'
 import { EventBus } from '@/event-bus.js'
 export default {
   name: 'app',
-  components: {PurchaseNav, TopNav},
+  components: {PurchaseNav, TopNav, MainMenu},
   data: function () {
     return {
       products: [
