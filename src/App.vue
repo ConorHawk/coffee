@@ -25,15 +25,15 @@ export default {
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
           img: '/static/images/coffee1.jpg',
           price: 100,
-          count: 0
+          count: 1
         }, {
           name: 'Robusta',
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
           img: '/static/images/coffee2.jpg',
           price: 150,
-          count: 0
+          count: 2
         }, {
-          name: 'Liberian coffee',
+          name: 'Liberian',
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
           img: '/static/images/coffee3.jpg',
           price: 200,

@@ -23,6 +23,7 @@ export default {
   },
   methods: {
     purchase: function () {
+      var self = this
       this.$swal({
         type: 'success',
         title: 'Order Complete',
@@ -30,6 +31,10 @@ export default {
             '<p>Your order has been placed. You\'ll receive an email confirming your order and your invoice.</p><p>Enjoy your coffee and thank you for using CAPP.</p>',
         confirmButtonClass: 'btn',
         buttonsStyling: false
+      }).then((result) => {
+        if (result.value) {
+          self.$router.push('Subscription')
+        }
       })
     }
   },

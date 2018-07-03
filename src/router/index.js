@@ -5,6 +5,7 @@ import ProductIndex from '@/components/ProductIndex'
 import Register from '@/components/Register'
 import Onboarding from '@/components/Onboarding'
 import Payment from '@/components/Payment'
+import Subscription from '@/components/Subscription'
 
 Vue.use(Router)
 
@@ -37,6 +38,13 @@ export default new Router({
       meta: {
         showTopNav: true,
         showBotNav: true
+      }
+    }, {
+      path: '/subscription',
+      name: 'Subscription',
+      component: Subscription,
+      meta: {
+        showTopNav: true
       }
     }
   ]
