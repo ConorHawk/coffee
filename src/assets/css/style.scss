@@ -82,8 +82,11 @@ button:focus {
 }
 
 .btn {
-	@apply bg-coffee text-white uppercase tracking-wide px-4 py-2 rounded text-sm font-normal text-center;
+	@apply bg-coffee text-white uppercase tracking-wide px-4 py-2 rounded text-sm font-normal text-center border border-coffee;
 	min-width:100px;
+  &.hollow {
+    @apply bg-transparent text-coffee;
+  }
 }
 
 label {

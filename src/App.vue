@@ -23,19 +23,19 @@ export default {
         {
           name: 'Arabica',
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-          img: 'http://fixationcoffee.co.nz/wp-content/uploads/Best-Price-ROASTED-ARABICA-COFFEE-BEANS.jpg',
+          img: '/static/images/coffee1.jpg',
           price: 100,
-          count: 1
+          count: 0
         }, {
           name: 'Robusta',
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-          img: 'https://enjoyjava.com/wp-content/uploads/2018/02/Robusta-coffee-beans-roatsted-close-up.jpg',
+          img: '/static/images/coffee2.jpg',
           price: 150,
           count: 0
         }, {
           name: 'Liberian coffee',
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-          img: 'https://i2.wp.com/ottosgranary.com/wp-content/uploads/2018/02/Macadamia-Kona.jpg?fit=3024%2C4032&ssl=1',
+          img: '/static/images/coffee3.jpg',
           price: 200,
           count: 0
         }
