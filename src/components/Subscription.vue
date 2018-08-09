@@ -1,7 +1,29 @@
 <template>
   <div class="min-h-full flex justify-between items-center" style="padding:45px 0">
     <div class="min-h-full w-full p-4">
-      <div>
+      <div class="py-4">
+        <div class="mb-12">
+          <h1 class="text-coffee-light">My Account</h1>
+          <div>
+            <p>How many cups of coffee does your household drink each day?</p>
+            <div style="min-height:4.5em">
+              <transition-group name="list-complete" tag="div" class="text-center flex flex-wrap justify-center">
+                  <div class="list-complete-item text-xl" v-for="i in coffeeCount" :key="i + 'test'">
+                    <i class="fas fa-coffee"></i>
+                  </div>
+                </transition-group>
+            </div>
+          </div>
+          <div class="flex justify-center">
+            <button class="flex justify-center text-coffee text-lg w-12 h-10 border-coffee rounded-l-full border-r border-t border-l border-b focus:outline-none" @click="changeCount(-1)">
+              <i class="fal fa-minus"></i>
+            </button>
+            <button class="flex justify-center text-coffee text-lg w-12 h-10 border-coffee rounded-r-full border-r border-t border-b focus:outline-none" @click="changeCount(1)">
+              <i class="fal fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      
         <h1 class="text-coffee-light">My {{subscription ? 'Subscription' : 'previous order'}}</h1>
         <div class="py-2">
           <div class="flex flex-wrap justify-start">
@@ -58,6 +80,15 @@
           <div class="py-4" v-else key="nosub">
             <button @click="repurchase()" class="btn">Re-purchase previous order</button>
           </div>
+          <div>
+            <div style="padding:.5rem;">
+              <p class="text-lg mr-4 inline" for="byDoor">Leave by my door</p> <input id="byDoor" type="checkbox">
+            </div>
+            <div style="padding:.5rem;">
+              <p class="text-lg m-0">Notes</p>
+              <textarea name="" id="" rows="4"></textarea>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -67,7 +98,7 @@
 <script>
 import { EventBus } from '@/event-bus.js'
 export default {
-  props: ['products', 'priceDetails', 'coffeeFrequencyInDays', 'planDetails', 'subscription'],
+  props: ['products', 'priceDetails', 'coffeeFrequencyInDays', 'planDetails', 'subscription', 'coffeeCount'],
   data () {
     return {
       shipmentDays: 14,
@@ -78,6 +109,9 @@ export default {
     this.shipmentDays = this.coffeeFrequencyInDays
   },
   methods: {
+    changeCount (amount) {
+      EventBus.$emit('update-coffee-count', amount)
+    },
     changeProductCount: function (index, count) {
       EventBus.$emit('change-product-count', index, count)
     },
@@ -118,5 +152,18 @@ export default {
     p {
       margin: 0;
     }
+  }
+  .list-complete-item {
+    transition: all 0.2s;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .list-complete-enter, .list-complete-leave-to
+  /* .list-complete-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .list-complete-leave-active {
+    position: absolute;
   }
 </style>
