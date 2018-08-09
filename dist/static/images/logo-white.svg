@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g>
+        <path d="M224.241,243.969C204.176,259.099 179.256,268.066 152.269,268.066C85.968,268.066 32.14,213.944 32.14,147.28C32.14,80.616 85.968,26.494 152.269,26.494C207.969,26.494 254.867,64.694 268.438,116.438" style="fill:none;stroke:#ffffff;stroke-width:41.67px;"/>
+        <g transform="matrix(1.01704,0,0,1.01704,-25.32,-26.6944)">
+            <g>
+                <g transform="matrix(0.533953,-0.845514,0.845514,0.533953,-106.01,352.752)">
+                    <text x="266.98px" y="272.539px" style="fill:#ffffff;font-family:'Montserrat-Black', 'Montserrat';font-weight:900;font-size:53.259px;">A</text>
+                </g>
+                <g transform="matrix(0.317949,-0.948108,0.948108,0.317949,-19.9713,434.791)">
+                    <text x="292.212px" y="231.277px" style="fill:#ffffff;font-family:'Montserrat-Black', 'Montserrat';font-weight:900;font-size:53.259px;">P</text>
+                </g>
+                <g transform="matrix(0.0843757,-0.996434,0.996434,0.0843757,91.9035,477.9)">
+                    <text x="305.991px" y="188.943px" style="fill:#ffffff;font-family:'Montserrat-Black', 'Montserrat';font-weight:900;font-size:53.259px;">P</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(0.210882,0,0,0.210882,116.935,117.536)">
+            <path d="M296.726,29.724C296.726,29.724 243.477,-28.671 138.464,18.903C33.451,66.477 -31.043,199.092 12.92,270.957C12.92,270.957 23.251,232.124 67.84,197.584C112.43,163.043 156.116,158.366 209.448,126.137C285.529,80.162 296.726,29.724 296.726,29.724Z" style="fill:#ffffff"/>
+            <g transform="matrix(-1,-1.22465e-16,1.22465e-16,-1,316.013,306.894)">
+                <path d="M293.829,25.054C293.829,25.054 243.477,-28.671 138.464,18.903C33.451,66.477 -33.02,185.447 10.943,257.312C10.943,257.312 32.399,215.268 76.989,180.728C121.578,146.188 160.795,145.522 214.127,113.293C290.208,67.318 293.829,25.054 293.829,25.054Z" style="fill:#ffffff;"/>
+            </g>
+        </g>
+    </g>
+</svg>

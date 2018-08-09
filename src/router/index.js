@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Splash from '@/components/Splash'
 import ProductIndex from '@/components/ProductIndex'
+import ProductShow from '@/components/ProductShow'
 import Register from '@/components/Register'
 import Onboarding from '@/components/Onboarding'
 import Payment from '@/components/Payment'
@@ -27,6 +28,14 @@ export default new Router({
       path: '/products',
       name: 'ProductIndex',
       component: ProductIndex,
+      meta: {
+        showTopNav: true,
+        showBotNav: true
+      }
+    }, {
+      path: '/product/:id',
+      name: 'ProductShow',
+      component: ProductShow,
       meta: {
         showTopNav: true,
         showBotNav: true

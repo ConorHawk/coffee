@@ -12,12 +12,12 @@
           :country="['au', 'nz']"
         >
         </vue-google-autocomplete>
-        <label for="password">Delivery Frequency</label><br>
+        <!-- <label for="password">Delivery Frequency</label><br>
         <select>
           <option value="1">Weekly</option>
           <option value="2">Monthly</option>
           <option value="3">Fortnightly</option>
-        </select>
+        </select> -->
         <label for="password">Payment Type</label><br>
         <select>
           <option value="1">Credit Card</option>

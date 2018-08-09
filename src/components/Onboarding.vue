@@ -12,10 +12,10 @@
           </transition-group>
       </div>
       <div class="flex justify-center">
-        <button class="flex justify-center text-coffee text-lg w-12 h-10 border-coffee rounded-l-full border-r border-t border-l border-b focus:outline-none" @click="coffeeCount--">
+        <button class="flex justify-center text-coffee text-lg w-12 h-10 border-coffee rounded-l-full border-r border-t border-l border-b focus:outline-none" @click="changeCount(-1)">
           <i class="fal fa-minus"></i>
         </button>
-        <button class="flex justify-center text-coffee text-lg w-12 h-10 border-coffee rounded-r-full border-r border-t border-b focus:outline-none" @click="coffeeCount++">
+        <button class="flex justify-center text-coffee text-lg w-12 h-10 border-coffee rounded-r-full border-r border-t border-b focus:outline-none" @click="changeCount(1)">
           <i class="fal fa-plus"></i>
         </button>
       </div>
@@ -31,11 +31,17 @@
 </template>
 
 <script>
+import { EventBus } from '@/event-bus.js'
 export default {
   name: 'hello',
+  props: ['coffeeCount'],
   data () {
     return {
-      coffeeCount: 1
+    }
+  },
+  methods: {
+    changeCount (amount) {
+      EventBus.$emit('update-coffee-count', amount)
     }
   }
 }

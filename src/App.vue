@@ -4,9 +4,9 @@
       <top-nav v-if="$route.meta.showTopNav" class="top-nav"></top-nav>
     </transition>
     <transition name="page" mode="out-in">
-      <router-view :products="products" :priceDetails="priceDetails"></router-view>
+      <router-view :products="products" :priceDetails="priceDetails" :coffee-count="coffeeCount" :subscription="subscription" :coffee-frequency-in-days="coffeeFrequencyInDays" :plan-details="planDetails"></router-view>
     </transition>
-    <purchase-nav v-if="$route.meta.showBotNav" :priceDetails="priceDetails"></purchase-nav>
+    <purchase-nav v-if="$route.meta.showBotNav" :priceDetails="priceDetails" :subscription="subscription" :coffee-frequency-in-days="coffeeFrequencyInDays"></purchase-nav>
     <main-menu></main-menu>
   </div>
 </template>
@@ -21,45 +21,110 @@ export default {
   components: {PurchaseNav, TopNav, MainMenu},
   data: function () {
     return {
+      coffeeCount: 1,
+      subscription: true,
       products: [
         {
           name: 'Arabica',
+          id: 1,
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
           img: '/static/images/coffee1.jpg',
-          price: 100,
-          count: 0
+          selectedPlan: null,
+          prices: [
+            {
+              name: '250g',
+              id: 1,
+              amount: 250,
+              price: 10
+            }, {
+              name: '500g',
+              id: 2,
+              amount: 500,
+              price: 20
+            }, {
+              name: '1kg',
+              id: 3,
+              amount: 1000,
+              price: 40
+            }
+          ]
         }, {
           name: 'Robusta',
+          id: 2,
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
           img: '/static/images/coffee2.jpg',
-          price: 150,
-          count: 0
+          selectedPlan: null,
+          prices: [
+            {
+              name: '250g',
+              id: 1,
+              amount: 250,
+              price: 10
+            }, {
+              name: '500g',
+              id: 2,
+              amount: 500,
+              price: 20
+            }, {
+              name: '1kg',
+              id: 3,
+              amount: 1000,
+              price: 40
+            }
+          ]
         }, {
           name: 'Liberian',
+          id: 3,
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
           img: '/static/images/coffee3.jpg',
-          price: 200,
-          count: 0
+          selectedPlan: null,
+          prices: [
+            {
+              name: '250g',
+              id: 1,
+              amount: 250,
+              price: 10
+            }, {
+              name: '500g',
+              id: 2,
+              amount: 500,
+              price: 20
+            }, {
+              name: '1kg',
+              id: 3,
+              amount: 1000,
+              price: 40
+            }
+          ]
         }
       ]
     }
   },
   mounted: function () {
-    EventBus.$on('change-product-count', (index, count) => {
-      this.products[index].count = this.products[index].count + count
+    EventBus.$on('change-product-amount', (id, priceId) => {
+      var index = this.products.findIndex(product => product.id === id)
+      this.products[index].selectedPlan = priceId
+    })
+    EventBus.$on('update-coffee-count', (count) => {
+      this.coffeeCount = this.coffeeCount + count
+    })
+    EventBus.$on('change-purchase-type', (subscription) => {
+      this.subscription = subscription
     })
   },
   computed: {
     priceDetails: function () {
-      var totalProducts = 0
-      var totalPrice = 0
-      for (var i = 0; i < this.products.length; i++) {
-        totalProducts = totalProducts + this.products[i].count
-        totalPrice = totalPrice + (this.products[i].count * this.products[i].price)
+      return this.products.find(product => product.selectedPlan)
+    },
+    planDetails () {
+      if (this.priceDetails) {
+        return this.priceDetails.prices.find(price => price.id === this.priceDetails.selectedPlan)
       }
-      return {
-        totalProducts: totalProducts,
-        totalPrice: totalPrice
+    },
+    coffeeFrequencyInDays () {
+      if (this.planDetails) {
+        var coffeePerDay = 18 * this.coffeeCount
+        return Math.floor(this.planDetails.amount / coffeePerDay)
       }
     }
   }

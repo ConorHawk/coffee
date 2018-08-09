@@ -2,7 +2,7 @@
   <div class="min-h-full flex justify-between items-center" style="padding:45px 0">
     <div class="min-h-full w-full p-4">
       <div>
-        <h1 class="text-coffee-light">My Subscription</h1>
+        <h1 class="text-coffee-light">My {{subscription ? 'Subscription' : 'previous order'}}</h1>
         <div class="py-2">
           <div class="flex flex-wrap justify-start">
             <!-- <div class="coffee-item" v-for="product in selectedProducts">
@@ -13,31 +13,20 @@
                 <p class="text-center">{{product.name}}</p>
               </div>
             </div> -->
-            <div class="my-2 product-button w-full" v-for="(product, index) in selectedProducts">
+            <div class="my-2 product-button w-full">
               <div class="rounded bg-coffee-lighter text-coffee-dark flex">
-                <div class="w-1/3 flex-none bg-cover bg-center" :style="{'backgroundImage': `url('${product.img}')`}"></div>
+                <div class="w-1/3 flex-none bg-cover bg-center" :style="{'backgroundImage': `url('${priceDetails.img}')`}"></div>
                 <div class="p-2 text-left">
-                  <h3 class="text-base">{{product.name}}</h3>
-                  <h4 class="font-light text-lg">${{product.price}} <span class="text-xs">each</span></h4>
+                  <h3 class="text-base">{{priceDetails.name}}</h3>
+                  <h4 class="font-light text-lg">{{planDetails.name}}</h4>
                   <div class="pb-2 pt-4 flex flex-col items-start justify-center">
-                    <p class="text-xs uppercase tracking-wide text-coffee m-0 inline">Quantity</p>
-                    <div class="border-coffee border rounded-full inline-flex items-center justify-between">
-                      <button :disabled="product.count === 0" class="px-4 py-2 text-coffee product-count-button" @click="changeProductCount(index, -1)">
-                        <i class="text-xs fal fa-chevron-left"></i>
-                      </button>
-                      <p class="w-6 text-center m-0">
-                        {{product.count}}
-                      </p>
-                      <button class="px-4 py-2 text-coffee" @click="changeProductCount(index, 1)">
-                        <i class="text-xs fal fa-chevron-right"></i>
-                      </button>
-                    </div>
+                    <h4 class="text-sm font-grey-darker font-normal">${{planDetails.price}} <span class="text-xs"></span><span v-if="subscription"> per month</span></h4>
                   </div>
                 </div>
               </div>
             </div> 
           </div>
-          <div class="w-full">
+          <div key="sub" v-if="subscription" class="w-full">
             <table>
               <tr>
                 <td><p class="text-lg">Subscription Status:</p></td>
@@ -49,14 +38,10 @@
                 </td>
               </tr>
               <tr>
-                <td><p class="text-lg">Next payment:</p></td>
-                <td><span class="font-semibold text-xl">${{priceDetails.totalPrice}}</span></td>
-              </tr>
-              <tr>
                 <td><p class="text-lg m-0">Next shipment in:</p></td>
                 <td>
                   <div class="border-coffee border rounded-full inline-flex items-center justify-between">
-                    <button :disabled="shipmentDays === 0" class="px-4 py-2 text-coffee product-count-button" @click="shipmentDays--">
+                    <button :disabled="shipmentDays === 2" class="px-4 py-2 text-coffee product-count-button" @click="shipmentDays--">
                       <i class="text-xs fal fa-chevron-left"></i>
                     </button>
                     <p class="text-center m-0 text-lg font-semibold">
@@ -70,6 +55,9 @@
               </tr>
             </table>
           </div>
+          <div class="py-4" v-else key="nosub">
+            <button @click="repurchase()" class="btn">Re-purchase previous order</button>
+          </div>
         </div>
       </div>
     </div>
@@ -79,17 +67,32 @@
 <script>
 import { EventBus } from '@/event-bus.js'
 export default {
-  name: 'hello',
-  props: ['products', 'priceDetails'],
+  props: ['products', 'priceDetails', 'coffeeFrequencyInDays', 'planDetails', 'subscription'],
   data () {
     return {
       shipmentDays: 14,
       subStatus: true
     }
   },
+  mounted () {
+    this.shipmentDays = this.coffeeFrequencyInDays
+  },
   methods: {
     changeProductCount: function (index, count) {
       EventBus.$emit('change-product-count', index, count)
+    },
+    repurchase () {
+      this.$swal({
+        type: 'success',
+        title: 'Order Complete',
+        html:
+            '<p>Your order has been placed. You\'ll receive an email confirming your order and your invoice.</p><p>Enjoy your coffee and thank you for using CAPP.</p>',
+        confirmButtonClass: 'btn',
+        buttonsStyling: false
+      }).then((result) => {
+        if (result.value) {
+        }
+      })
     }
   },
   computed: {

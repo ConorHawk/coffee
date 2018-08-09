@@ -1,22 +1,23 @@
 <template>
-  <div :class="{'active': priceDetails.totalProducts && priceDetails.totalProducts > 0}" class="fixed pin-b pin-r w-full bg-coffee-dark py-2 px-4 flex items-center justify-between border-t border-coffee purchase-nav-bar" style="height:62px">
-    <div>
-      <p class="m-0 text-xs">{{priceDetails.totalProducts}} item(s) selected</p>
-      <p class="text-lg font-semibold m-0">${{priceDetails.totalPrice}} <span class="text-xs font-light">AUD</span></p>
-    </div>
-    <button @click="purchase()" v-if="$route.name === 'Payment'" class="btn">
-      Purchase
-    </button>
-    <router-link v-else tag="button" class="btn" to="/payment">
-      NEXT
-    </router-link>
+  <div :class="{'active': priceDetails}" class="fixed pin-b pin-r w-full bg-coffee-dark py-2 px-4 flex items-center justify-between border-t border-coffee purchase-nav-bar z-30" style="height:62px">
+    <template v-if="priceDetails">
+      <div>
+        <p class="m-0 text-xs">{{priceDetails.name}}</p>
+        <p class="text-lg font-semibold m-0">${{selectedPlan.price}} <span class="text-xs font-light">AUD <span v-if="subscription">/ {{coffeeFrequencyInDays}} days</span></span></p>
+      </div>
+      <button @click="purchase()" v-if="$route.name === 'Payment'" class="btn">
+        Purchase
+      </button>
+      <router-link v-else tag="button" class="btn" to="/payment">
+        NEXT
+      </router-link>
+    </template>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'hello',
-  props: ['priceDetails'],
+  props: ['priceDetails', 'subscription', 'coffeeFrequencyInDays'],
   data () {
     return {
     }
@@ -39,6 +40,9 @@ export default {
     }
   },
   computed: {
+    selectedPlan () {
+      return this.priceDetails.prices.find(price => price.id === this.priceDetails.selectedPlan)
+    }
   }
 }
 </script>
