@@ -3,6 +3,10 @@
     <div class="min-h-full  p-4">
       <div>
         <h1>Complete Order</h1>
+        <label for="email">Email</label><br>
+        <input type="text" id="email" name="">
+        <label for="password">Password</label><br>
+        <input type="password" id="password" name="">
         <label for="email">Delivery Address</label><br>
         <vue-google-autocomplete
           id="map"

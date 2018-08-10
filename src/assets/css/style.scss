@@ -99,6 +99,7 @@ label {
 }
 
 input[type="text"],
+input[type="password"],
 select,
 textarea {
 	@apply rounded p-2 w-full shadow-inner mb-4 appearance-none bg-white;
