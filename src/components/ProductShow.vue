@@ -26,10 +26,11 @@
                         </div>
                     </div>
                     <div v-if="activeCoffee.selectedPlan">
-                        <p>You told us your household drinks <span class="text-coffee font-bold">{{coffeeCount}}</span> cup of coffee a day.</p>
-                        <p v-if="subscription">Based on the selection above, you will receive coffee every:</p>
-                        <p v-else>Based on the selection above, this will last you:</p>
-                        <h2>{{coffeeFrequencyInDays}} days</h2>
+                        <p>
+                            You told us your household drinks <span class="text-coffee font-bold">{{coffeeCount}}</span> cup(s) of coffee a day.
+                            <span v-if="subscription">Based on the selected amount, you will receive coffee every <span class="text-coffee font-bold">{{coffeeFrequencyInDays}} days.</span></span>
+                            <span v-else>Based on the selected amount, this will last you <span class="text-coffee font-bold">{{coffeeFrequencyInDays}} days.</span></span>
+                        </p>
                     </div>
                 </div>
             </div>

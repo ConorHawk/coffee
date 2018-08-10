@@ -40,10 +40,9 @@
                 <div class="w-1/3 flex-none bg-cover bg-center" :style="{'backgroundImage': `url('${priceDetails.img}')`}"></div>
                 <div class="p-2 text-left">
                   <h3 class="text-base">{{priceDetails.name}}</h3>
-                  <h4 class="font-light text-lg">{{planDetails.name}}</h4>
-                  <div class="pb-2 pt-4 flex flex-col items-start justify-center">
-                    <h4 class="text-sm font-grey-darker font-normal">${{planDetails.price}} <span class="text-xs"></span><span v-if="subscription"> per month</span></h4>
-                  </div>
+                  <h4 class="font-light text-lg">${{planDetails.price}}<span class="text-xs">/{{planDetails.name}}</span></h4>
+                  <br>
+                  <p class="m-0 text-sm">{{priceDetails.description}}</p>
                 </div>
               </div>
             </div> 
@@ -81,7 +80,7 @@
             <button @click="repurchase()" class="btn">Re-purchase previous order</button>
           </div>
           <div>
-            <div style="padding:.5rem;">
+            <div class="flex items-center" style="padding:.5rem;">
               <p class="text-lg mr-4 inline" for="byDoor">Leave by my door</p> <input id="byDoor" type="checkbox">
             </div>
             <div style="padding:.5rem;">
