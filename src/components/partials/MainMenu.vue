@@ -19,6 +19,9 @@
           <button @click="changeRoute('/subscription')" class="text-2xl mb-4 text-coffee-light">
             Subscription
           </button>
+          <button @click="changeRoute('/about-us')" class="text-2xl mb-4 text-coffee-light">
+            About Us
+          </button>
         </div>
       </div>
     </div>
